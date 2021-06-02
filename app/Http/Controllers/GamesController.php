@@ -20,7 +20,10 @@ class GamesController extends Controller
         $current = Carbon::now()->timestamp;
         $afterFourMonth = Carbon::now()->addMonths(4)->timestamp;
 
-        $popularGames = Http::withHeaders(config('services.igdb'))
+        $popularGames = Http::withHeaders([
+            'Client-ID' => env('IGDB_CLIENT_ID'),
+        ])
+            ->withToken(env('IGDB_TOKEN'))
             ->withBody(
                 "fields name, total_rating_count, total_rating, cover.url, first_release_date, platforms.abbreviation; 
                 where platforms = (6) 
@@ -32,9 +35,10 @@ class GamesController extends Controller
             )->post('https://api.igdb.com/v4/games')
             ->json();
 
-        // dump($popularGames);
-
-        $recentlyReviewed = Http::withHeaders(config('services.igdb'))
+        $recentlyReviewed = Http::withHeaders([
+            'Client-ID' => env('IGDB_CLIENT_ID'),
+        ])
+            ->withToken(env('IGDB_TOKEN'))
             ->withBody(
                 "fields name, total_rating_count, total_rating, cover.url, first_release_date, platforms.abbreviation, summary; 
                 where platforms = (6) 
@@ -47,9 +51,10 @@ class GamesController extends Controller
             )->post('https://api.igdb.com/v4/games')
             ->json();
 
-        // dump($recentlyReviewed);
-
-        $mostAnticipated = Http::withHeaders(config('services.igdb'))
+        $mostAnticipated = Http::withHeaders([
+            'Client-ID' => env('IGDB_CLIENT_ID'),
+        ])
+            ->withToken(env('IGDB_TOKEN'))
             ->withBody(
                 "fields name, hypes, cover.url, first_release_date, platforms.abbreviation, summary; 
                 where platforms = (6) 
@@ -62,9 +67,10 @@ class GamesController extends Controller
             )->post('https://api.igdb.com/v4/games')
             ->json();
 
-        dump($mostAnticipated);
-
-        $comingSoon = Http::withHeaders(config('services.igdb'))
+        $comingSoon = Http::withHeaders([
+            'Client-ID' => env('IGDB_CLIENT_ID'),
+        ])
+            ->withToken(env('IGDB_TOKEN'))
             ->withBody(
                 "fields name, hypes, cover.url, first_release_date, platforms.abbreviation; 
                 where platforms = (6) 
@@ -75,8 +81,6 @@ class GamesController extends Controller
                 "text/plain"
             )->post('https://api.igdb.com/v4/games')
             ->json();
-
-        // dump($comingSoon);
 
         return view('index', [
             'popularGames' => $popularGames,
