@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Games</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    @livewireStyles
+
 </head>
 <body class="bg-gray-900 text-white">
     <header class="border-b border-gray-800">
@@ -81,5 +84,7 @@
             Powered By <a href="#" class="underline hover:text-gray-400">IGDB API</a>
         </div>
     </footer>
+
+    @livewireScripts
 </body>
 </html>
