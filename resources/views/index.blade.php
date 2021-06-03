@@ -3,6 +3,8 @@
 @section('content')
     <div class="container mx-auto px-4">
         <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Popular Games</h2>
+        {{-- Livewire allows you to load these components asynchronously, you don't have to load every component before you see the page --}}
+        {{-- You load the inital page first, livewire makes ajax request with data and re-renders component --}}
         <livewire:popular-games />
 
         <div class="flex flex-col lg:flex-row my-10">

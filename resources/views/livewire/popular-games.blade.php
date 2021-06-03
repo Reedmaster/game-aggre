@@ -28,8 +28,6 @@
             </div>
         </div>
     @empty
-        <div>
-            Loading...
-        </div>
+        @include('layouts.spinner')
     @endforelse
 </div> {{-- end popular games --}}

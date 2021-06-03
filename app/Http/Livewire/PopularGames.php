@@ -12,6 +12,7 @@ class PopularGames extends Component
 
     public function loadPopularGames()
     {
+        // Carbon deals with DateTime and turns it into readable time
         $before = Carbon::now()->subMonths(2)->timestamp;
         $after = Carbon::now()->addMonths(2)->timestamp;
 
