@@ -26,11 +26,11 @@ class PopularGames extends Component
                 ->withToken(env('IGDB_TOKEN'))
                 ->withBody(
                     "fields name, total_rating_count, total_rating, cover.url, first_release_date, platforms.abbreviation; 
-                where platforms = (6) 
-                & (total_rating_count != null)
-                & (first_release_date >= {$before} & first_release_date < {$after});
-                sort total_rating_count desc;
-                limit 12;",
+                        where platforms = (6) 
+                        & (total_rating_count != null)
+                        & (first_release_date >= {$before} & first_release_date < {$after});
+                        sort total_rating_count desc;
+                        limit 12;",
                     "text/plain"
                 )->post('https://api.igdb.com/v4/games')
                 ->json();

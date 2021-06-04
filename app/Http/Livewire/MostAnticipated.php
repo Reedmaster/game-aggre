@@ -16,19 +16,19 @@ class MostAnticipated extends Component
         $current = Carbon::now()->timestamp;
         $afterFourMonth = Carbon::now()->addMonths(4)->timestamp;
         
-        $this->popularGames = Cache::remember('popular-games', 7, function () use ($current, $afterFourMonth) {
+        $this->mostAnticipated = Cache::remember('most-anticipated', 7, function () use ($current, $afterFourMonth) {
             return Http::withHeaders([
                 'Client-ID' => env('IGDB_CLIENT_ID'),
             ])
                 ->withToken(env('IGDB_TOKEN'))
                 ->withBody(
                     "fields name, hypes, cover.url, first_release_date, platforms.abbreviation, summary; 
-                    where platforms = (6) 
-                    & (hypes != null)
-                    & (first_release_date >= {$current})
-                    & (first_release_date < {$afterFourMonth});
-                    sort hypes desc;
-                    limit 4;",
+                        where platforms = (6) 
+                        & (hypes != null)
+                        & (first_release_date >= {$current})
+                        & (first_release_date < {$afterFourMonth});
+                        sort hypes desc;
+                        limit 4;",
                     "text/plain"
                 )->post('https://api.igdb.com/v4/games')
                 ->json();

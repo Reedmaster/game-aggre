@@ -28,6 +28,17 @@
             </div>
         </div>
     @empty
-        @include('layouts.spinner')
+        {{-- @include('layouts.spinner') --}}
+        @foreach (range(1, 12) as $game)
+            <div class="game mt-8">
+                <div class="relative inline-block">
+                    <div class="bg-gray-800 w-44 h-56">
+
+                    </div>
+                </div>
+                <div class="block text-transparent text-lg bg-gray-700 rounded font-semibold leading-tight mt-2">Title</div>
+                <div class="text-transparent bg-gray-700 inline-block rounded mt-3">PS4, PC, XBOX</div>
+            </div>
+        @endforeach
     @endforelse
 </div> {{-- end popular games --}}
