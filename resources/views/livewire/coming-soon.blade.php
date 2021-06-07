@@ -8,7 +8,8 @@
             <div class="ml-4">
                 <a href="" class="hover:text-gray-300">{{ $game['name'] }}</a>
                 <div class="text-gray-400 text-sm mt-1">
-                    {{ Carbon\Carbon::parse($game['first_release_date'])->format('D m, Y') }}</div>
+                    {{ Carbon\Carbon::parse($game['first_release_date'])->format('D m, Y') }}
+                </div>
             </div>
         </div>
     @empty

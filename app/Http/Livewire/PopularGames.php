@@ -25,7 +25,7 @@ class PopularGames extends Component
             ])
                 ->withToken(env('IGDB_TOKEN'))
                 ->withBody(
-                    "fields name, total_rating_count, total_rating, cover.url, first_release_date, platforms.abbreviation; 
+                    "fields name, total_rating_count, total_rating, cover.url, first_release_date, platforms.abbreviation, slug; 
                         where platforms = (6) 
                         & (total_rating_count != null)
                         & (first_release_date >= {$before} & first_release_date < {$after});

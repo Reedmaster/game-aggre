@@ -45,9 +45,30 @@ class GamesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        # Not using livewire because one request
+        $game = Http::withHeaders([
+            'Client-ID' => env('IGDB_CLIENT_ID'),
+        ])
+            ->withToken(env('IGDB_TOKEN'))
+            ->withBody(
+                "fields *, cover.url, first_release_date, total_rating_count, platforms.abbreviation, rating, 
+                slug, involved_companies.company.name, genres.name, aggregated_rating, summary, websites.*, 
+                videos.*, screenshots.*, similar_games.cover.url, similar_games.name, similar_games.rating, 
+                similar_games.platforms.abbreviation, similar_games.slug;
+                where slug=\"{$slug}\";",
+                "text/plain"
+            )->post('https://api.igdb.com/v4/games')
+            ->json();
+
+            dump($game);
+
+        abort_if(!$game, 404);
+
+        return view('show', [
+            'game' => $game[0],
+        ]);
     }
 
     /**
