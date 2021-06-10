@@ -104,19 +104,34 @@
 
                 <p class="mt-12">{{ $game['summary'] }}</p>
 
-                <div class="mt-12">
-                    <a href="https://youtube.com/watch/{{ $game['videos'][1]['video_id'] }}"
-                        class="inline-flex bg-blue-500 text-white font-semibold px-4 py-4 hover:bg-blue-600 rounded transition eas-in-out duration-150">
-                        <svg class="w-5 fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" display="block" id="Play">
-                            <path d="M6 4v16" />
-                            <path d="M20 12L6 20" />
-                            <path d="M20 12L6 4" />
-                        </svg>
 
-                        <span class="ml-2">Play Trailer</span>
-                    </a>
+                <div class="mt-12">
+                    @isset($game['videos'][0])
+                        <a href="https://youtube.com/watch/{{ $game['videos'][0]['video_id'] }}"
+                            class="inline-flex bg-blue-500 text-white font-semibold px-4 py-4 hover:bg-blue-600 rounded transition eas-in-out duration-150">
+                            <svg class="w-5 fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" display="block" id="Play">
+                                <path d="M6 4v16" />
+                                <path d="M20 12L6 20" />
+                                <path d="M20 12L6 4" />
+                            </svg>
+
+                            <span class="ml-2">Play Trailer</span>
+                        </a>
+                    @else
+                        <a class="inline-flex bg-blue-500 text-white font-semibold px-4 py-4 hover:bg-blue-600 rounded transition eas-in-out duration-150">
+                            <svg class="w-5 fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" display="block" id="Play">
+                                <path d="M6 4v16" />
+                                <path d="M20 12L6 20" />
+                                <path d="M20 12L6 4" />
+                            </svg>
+
+                            <span class="ml-2">No trailers yet</span>
+                        </a>
+                    @endisset
                 </div>
             </div>
         </div> <!-- end game-details -->
@@ -158,7 +173,8 @@
                             @endisset
                         </div>
 
-                        <a href="{{ route('games.show', $game['slug']) }}" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
+                        <a href="{{ route('games.show', $game['slug']) }}"
+                            class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
                             {{ $game['name'] }}
                         </a>
 
