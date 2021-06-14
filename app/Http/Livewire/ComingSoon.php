@@ -49,7 +49,7 @@ class ComingSoon extends Component
                 return collect($game)->merge([
                     // Place front end string here
                     'coverImageUrl' => Str::replaceFirst('thumb', 'cover_small', $game['cover']['url']),
-                    'releaseDate' => Carbon::parse($game['first_release_date'])->format('D m, Y'),
+                    'releaseDate' => Carbon::parse($game['first_release_date'])->format('d/m/y'),
                 ]);
             })->toArray();
         }
