@@ -9,12 +9,12 @@
     @livewireStyles
 
 </head>
-<body class="bg-gray-900 text-white">
+<body class="text-white bg-gray-900">
     <header class="border-b border-gray-800">
-        <nav class="container mx-auto flex flex-col lg:flex-row items-center justify-between px-4 py-6">
-            <div class="flex flex-col lg:flex-row items-center">
+        <nav class="container flex flex-col items-center justify-between px-4 py-6 mx-auto lg:flex-row">
+            <div class="flex flex-col items-center lg:flex-row">
                 <a href="/">
-                    {{-- <img src="/logo.svg" alt="logo" class="w-32 flex-none"> --}}
+                    {{-- <img src="/logo.svg" alt="logo" class="flex-none w-32"> --}}
                     <svg xmlns="http://www.w3.org/2000/svg" 
                         width="24" 
                         height="24" 
@@ -31,7 +31,7 @@
                         <path d="M9 5l1 2h4l1-2"/>
                     </svg>
                 </a>
-                <ul class="flex ml-0 lg:ml-16 space-x-8 mt-6 lg:mt-0">
+                <ul class="flex mt-6 ml-0 space-x-8 lg:ml-16 lg:mt-0">
                     <li><a href="#" class="hover:text-gray-400">Games</a></li>
                     <li><a href="#" class="hover:text-gray-400">Reviews</a></li>
                     <li><a href="#" class="hover:text-gray-400">Coming Soon</a></li>
@@ -39,10 +39,10 @@
             </div>
             <div class="flex items-center mt-6 lg:mt-0">
                 <div class="relative">
-                    <input type="text" class="bg-gray-800 text-sm rounded-full focus:outline-none focus:shadow-outline w-64 px-3 pl-8 py-1" placeholder="Search...">
+                    <input type="text" class="w-64 px-3 py-1 pl-8 text-sm bg-gray-800 rounded-full focus:outline-none focus:shadow-outline" placeholder="Search...">
                     <div class="absolute top-0 flex items-center h-full ml-2">
                         <svg xmlns="http://www.w3.org/2000/svg"
-                            class="fill-current text-gray-400 w-4"
+                            class="w-4 text-gray-400 fill-current"
                             viewBox="0 0 32 40">
                             <g data-name="Layer 33">
                                 <path d="M28.1318,26.0537l-7.76-7.59a10.5782,10.5782,0,1,0-2.1525,2.0909l7.8151,7.6437a1.5,1.5,0,1,0,2.0976-2.1445ZM12.0381,19.5762a7.5381,7.5381,0,1,1,7.5381-7.5381A7.5467,7.5467,0,0,1,12.0381,19.5762Z"/>
@@ -52,7 +52,7 @@
                 </div>
                 <div class="ml-6">
                     <a href="#">
-                        {{-- <img src="" alt="avatar" class="rounded-full w-8"> --}}
+                        {{-- <img src="" alt="avatar" class="w-8 rounded-full"> --}}
                         <svg 
                             xmlns="http://www.w3.org/2000/svg" 
                             width="24" 
@@ -80,7 +80,7 @@
     </main>
 
     <footer class="border-t border-gray-800">
-        <div class="container mx-auto px-4 py-6">
+        <div class="container px-4 py-6 mx-auto">
             Powered By <a href="#" class="underline hover:text-gray-400">IGDB API</a>
         </div>
     </footer>

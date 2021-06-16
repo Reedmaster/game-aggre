@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mx-auto px-4">
-        <div class="game-details border-b border-gray-800 pb-12 flex flex-col lg:flex-row">
+    <div class="container px-4 mx-auto">
+        <div class="flex flex-col pb-12 border-b border-gray-800 game-details lg:flex-row">
             <div class="flex-none">
                 <img src="{{ $game['coverImageUrl'] }}" alt="cover">
             </div>
             <div class="lg:ml-12 xl:mr-64">
-                <h2 class="font-semibold text-4xl leading-tight mt-1">{{ $game['name'] }}</h2>
+                <h2 class="mt-1 text-4xl font-semibold leading-tight">{{ $game['name'] }}</h2>
 
                 <div class="text-gray-400">
                     <span>
@@ -26,7 +26,7 @@
                 <div class="flex flex-wrap items-center mt-8">
                     <div class="flex items-center">
                         <div class="w-16 h-16 bg-gray-800 rounded-full">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">
+                            <div class="flex items-center justify-center h-full text-xs font-semibold">
                                 {{ $game['memberRating'] }}
                             </div>
                         </div>
@@ -35,16 +35,16 @@
                     </div>
                     <div class="flex items-center ml-12">
                         <div class="w-16 h-16 bg-gray-800 rounded-full">
-                            <div class="font-semibold text-xs flex justify-center items-center h-full">
+                            <div class="flex items-center justify-center h-full text-xs font-semibold">
                                 {{ $game['criticRating'] }}
                             </div>
                         </div>
 
                         <div class="ml-4 text-xs">Critic <br> Score</div>
                     </div>
-                    <div class="flex items-center space-x-4 mt-4 sm:mt-0 sm:ml-12">
+                    <div class="flex items-center mt-4 space-x-4 sm:mt-0 sm:ml-12">
                         @if ($game['social']['official'])
-                            <div class="w-8 h-8 bg-gray-800 rounded-full flex justify-center items-center">
+                            <div class="flex items-center justify-center w-8 h-8 bg-gray-800 rounded-full">
                                 <a href="{{ $game['social']['official']['url'] }}" class="hover:text-gray-400">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -59,7 +59,7 @@
                         @endif
 
                         @if ($game['social']['instagram'])
-                            <div class="w-8 h-8 bg-gray-800 rounded-full flex justify-center items-center">
+                            <div class="flex items-center justify-center w-8 h-8 bg-gray-800 rounded-full">
                                 <a href="{{ $game['social']['instagram']['url'] }}" class="hover:text-gray-400">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="currentColor" stroke-width="2" display="block" id="InstagramFill">
@@ -71,7 +71,7 @@
                         @endif
 
                         @if ($game['social']['facebook'])
-                            <div class="w-8 h-8 bg-gray-800 rounded-full flex justify-center items-center">
+                            <div class="flex items-center justify-center w-8 h-8 bg-gray-800 rounded-full">
                                 <a href="{{ $game['social']['facebook']['url'] }}" class="hover:text-gray-400">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="currentColor" stroke-width="2" display="block" id="FacebookFill">
@@ -83,7 +83,7 @@
                         @endif
 
                         @if ($game['social']['twitter'])
-                            <div class="w-8 h-8 bg-gray-800 rounded-full flex justify-center items-center">
+                            <div class="flex items-center justify-center w-8 h-8 bg-gray-800 rounded-full">
                                 <a href="{{ $game['social']['twitter']['url'] }}" class="hover:text-gray-400">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="currentColor" stroke-width="2" display="block" id="TwitterFill">
@@ -102,7 +102,7 @@
                 <div class="mt-12">
                     @isset($game['videos'][0])
                         <a href="{{ $game['trailer'] }}"
-                            class="inline-flex bg-blue-500 text-white font-semibold px-4 py-4 hover:bg-blue-600 rounded transition eas-in-out duration-150">
+                            class="inline-flex px-4 py-4 font-semibold text-white transition duration-150 bg-blue-500 rounded hover:bg-blue-600 eas-in-out">
                             <svg class="w-5 fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" display="block" id="Play">
@@ -115,7 +115,7 @@
                         </a>
                     @else
                         <a
-                            class="inline-flex bg-blue-500 text-white font-semibold px-4 py-4 hover:bg-blue-600 rounded transition eas-in-out duration-150">
+                            class="inline-flex px-4 py-4 font-semibold text-white transition duration-150 bg-blue-500 rounded hover:bg-blue-600 eas-in-out">
                             <svg class="w-5 fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" display="block" id="Play">
@@ -131,25 +131,25 @@
             </div>
         </div> <!-- end game-details -->
 
-        <div class="images-container border-b border-gray-800 pb-12 mt-8">
-            <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Images</h2>
+        <div class="pb-12 mt-8 border-b border-gray-800 images-container">
+            <h2 class="font-semibold tracking-wide text-blue-500 uppercase">Images</h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-8">
+            <div class="grid grid-cols-1 gap-12 mt-8 md:grid-cols-2 lg:grid-cols-3">
                 @foreach ($game['screenshots'] as $screenshot)
                     <div>
                         <a href="{{ $screenshot['huge'] }}">
                             <img src="{{ $screenshot['big'] }}" alt="screenshot"
-                                class="hover:opacity-75 transition ease-in-out duration-150">
+                                class="transition duration-150 ease-in-out hover:opacity-75">
                         </a>
                     </div>
                 @endforeach
             </div>
         </div> <!-- end images-container -->
 
-        <div class="related-games-container mt-8">
-            <h2 class="text-blue-500 uppercase tracking-wide font-semibold">Related Games</h2>
+        <div class="mt-8 related-games-container">
+            <h2 class="font-semibold tracking-wide text-blue-500 uppercase">Related Games</h2>
 
-            <div class="related-games text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6 gap-12">
+            <div class="grid grid-cols-1 gap-12 text-sm related-games md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6">
                 @foreach ($game['similarGames'] as $game)
                     <x-game-card :game="$game" />
                 @endforeach

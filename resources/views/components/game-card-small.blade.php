@@ -1,11 +1,11 @@
-<div class="game flex">
+<div class="flex game">
     <a href="#">
         <img src="{{ $game['coverImageUrl'] }}" alt="game cover"
-            class="w-16 hover:opactiy-75 transition ease-in-out duration-150">
+            class="w-16 transition duration-150 ease-in-out hover:opactiy-75">
     </a>
     <div class="ml-4">
         <a href="" class="hover:text-gray-300">{{ $game['name'] }}</a>
-        <div class="text-gray-400 text-sm mt-1">
+        <div class="mt-1 text-sm text-gray-400">
             {{ $game['releaseDate'] }}
         </div>
     </div>
