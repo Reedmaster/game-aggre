@@ -9,6 +9,7 @@
 
     @livewireStyles
 
+    <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 
 <body class="text-white bg-gray-900">
