@@ -11,21 +11,33 @@
             </g>
         </svg>
     </div>
-    <div class="absolute z-50 w-64 mt-2 text-xs bg-gray-800 rounded">
-        <ul>
-            @foreach ($searchResults as $game)
-                <li class="border-b border-gray-700">
-                    <a href="#"
-                        class="flex items-center px-3 py-3 transition duration-150 ease-in-out hover:bg-gray-700">
-                        @isset($game['cover'])
-                            <img src="{{ Str::replaceFirst('thumb', 'cover_small', $game['cover']['url']) }}" alt="cover" class="w-10">
-                        @else
-                            <img src="" alt="">
-                        @endisset
-                        <span class="ml-4">{{ $game['name'] }}</span>
-                    </a>
-                </li>
-            @endforeach
-        </ul>
+
+    <div wire:loading class="top-0 right-0 mt-1 mr-2" style="position: absolute">
+        @include('layouts.spinner')
     </div>
+    
+    @if (strlen($search) >= 2)
+        <div class="absolute z-50 w-64 mt-2 text-xs bg-gray-800 rounded">
+            @if (count($searchResults) > 0)
+                <ul>
+                    @foreach ($searchResults as $game)
+                        <li class="border-b border-gray-700">
+                            <a href="{{ route('games.show', $game['slug']) }}"
+                                class="flex items-center px-3 py-3 transition duration-150 ease-in-out hover:bg-gray-700">
+                                @isset($game['cover'])
+                                    <img src="{{ Str::replaceFirst('thumb', 'cover_small', $game['cover']['url']) }}"
+                                        alt="cover" class="w-10">
+                                @else
+                                    <img src="" alt="">
+                                @endisset
+                                <span class="ml-4">{{ $game['name'] }}</span>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            @else
+                <div class="px-3 py-3">No results for "{{ $search }}"</div>
+            @endif
+        </div>
+    @endif
 </div>
