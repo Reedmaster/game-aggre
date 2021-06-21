@@ -99,10 +99,10 @@
                 <p class="mt-12">{{ $game['summary'] }}</p>
 
 
-                <div class="mt-12">
+                <div class="mt-12" x-data="{ isTrailerModalVisible: false }">
                     @isset($game['videos'][0])
-                        <a href="{{ $game['trailer'] }}"
-                            class="inline-flex px-4 py-4 font-semibold text-white transition duration-150 bg-blue-500 rounded hover:bg-blue-600 eas-in-out">
+                        <button @click="isTrailerModalVisible = true"
+                            class="flex px-4 py-4 font-semibold text-white transition duration-150 ease-in-out bg-blue-500 rounded hover:bg-blue-600">
                             <svg class="w-5 fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" display="block" id="Play">
@@ -112,7 +112,31 @@
                             </svg>
 
                             <span class="ml-2">Play Trailer</span>
-                        </a>
+                        </button>
+
+                        <div x-show="isTrailerModalVisible"
+                            class="fixed top-0 left-0 z-50 flex items-center w-full h-full overflow-y-auto bg-black bg-opacity-50 shadow-lg">
+                            <div class="container mx-auto overflow-y-auto rounded-lg lg:px-32">
+                                <div class="bg-gray-900 rounded">
+                                    <div class="flex justify-end pt-2 pr-4">
+                                        <button @click="isTrailerModalVisible = false"
+                                            @keydown.escape.window="isTrailerModalVisible = false"
+                                            class="text-3xl leading-none hover:text-gray-300"
+                                        >
+                                            &times;
+                                        </button>
+                                    </div>
+                                    <div class="px-8 py-8 modal-body">
+                                        <div class="relative pt-5 overflow-hidden h-96 responsive-container">
+                                            <iframe width="560" height="315"
+                                                class="absolute top-0 left-0 w-full h-full responsive-iframe" src="{{ $game['trailer'] }}"
+                                                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                                            </iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @else
                         <a
                             class="inline-flex px-4 py-4 font-semibold text-white transition duration-150 bg-blue-500 rounded hover:bg-blue-600 eas-in-out">
